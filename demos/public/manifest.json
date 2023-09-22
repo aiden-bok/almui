@@ -1,0 +1,30 @@
+{
+  "author": "Aiden <bokjaeoh@gmail.com>",
+  "background_color": "#ffffff",
+  "default_locale": "ko",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "images/favicon.ico",
+      "type": "image/x-icon"
+    },
+    {
+      "sizes": "192x192",
+      "src": "images/logo192.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "images/logo512.png",
+      "type": "image/png"
+    }
+  ],
+  "manifest_version": 2,
+  "name": "ALMUI Demos",
+  "short_name": "ALMUI Demos",
+  "start_url": ".",
+  "theme_color": "#000000",
+  "version": "1.0.0",
+  "version_name": "1.0.0"
+}
