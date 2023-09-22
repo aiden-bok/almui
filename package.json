@@ -28,12 +28,7 @@
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "dependencies": {
-    "moment": "^2.29.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.68.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.22.15",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -45,9 +40,20 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "moment": "^2.29.4",
     "prettier": "^3.0.3",
     "prettier-eslint": "^15.0.1",
-    "react-scripts": "^5.0.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "sass": "^1.68.0",
+    "vite": "^4.4.9"
+  },
+  "peerDependencies": {
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.68.0"
   },
   "babel": {
     "presets": [
