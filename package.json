@@ -28,7 +28,6 @@
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.22.15",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -46,8 +45,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
-    "sass": "^1.68.0",
-    "vite": "^4.4.9"
+    "sass": "^1.68.0"
   },
   "peerDependencies": {
     "moment": "^2.29.4",
@@ -72,12 +70,10 @@
     ]
   },
   "scripts": {
-    "build": "react-scripts build",
     "format": "prettier --check ./",
     "format:fix": "prettier --write ./",
     "lint": "eslint src/**",
     "publish": "rm -rf dist && mkdir dist && babel src -d dist --copy-files",
-    "start": "react-scripts start",
-    "test": "react-scripts test"
+    "start": "cd demos && npm start"
   }
 }

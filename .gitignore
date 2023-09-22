@@ -28,6 +28,7 @@ package-lock.json
 
 ## Build
 build
+dist
 
 ## Log
 logs

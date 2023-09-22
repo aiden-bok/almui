@@ -8,11 +8,7 @@
   },
   "dependencies": {
     "almui": "file:../",
-    "moment": "^2.29.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.16.0",
-    "sass": "^1.68.0"
+    "react-router-dom": "^6.16.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -50,7 +46,6 @@
     "format": "prettier --check ./",
     "format:fix": "prettier --write ./",
     "lint": "eslint src/**",
-    "start": "react-scripts start",
-    "test": "react-scripts test"
+    "start": "react-scripts start"
   }
 }
