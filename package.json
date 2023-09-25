@@ -1,6 +1,6 @@
 {
   "name": "almui",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "ALMUI is a library for easily using Material UI in React.js.",
   "keywords": [
     "front-end",
@@ -73,7 +73,7 @@
     "format": "prettier --check ./",
     "format:fix": "prettier --write ./",
     "lint": "eslint src/**",
-    "publish": "rm -rf dist && mkdir dist && babel src -d dist --copy-files",
-    "start": "cd demos && npm start"
+    "dist": "rm -rf dist && mkdir dist && babel src -d dist --copy-files",
+    "start": "npm run dist && cd demos && npm start"
   }
 }
