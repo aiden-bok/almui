@@ -26,9 +26,11 @@ $RECYCLE.BIN/
 node_modules
 package-lock.json
 
+## Domo
+demos
+
 ## Build
 build
-dist
 
 ## Log
 logs
