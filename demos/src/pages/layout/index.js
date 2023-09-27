@@ -1,2 +1,5 @@
+export * from './ASide.demo.page'
+export * from './Footer.demo.page'
+export * from './Header.demo.page'
 export * from './Layout.index.page'
 export * from './Page.demo.page'
