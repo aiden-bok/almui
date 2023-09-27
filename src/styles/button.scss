@@ -1,0 +1,193 @@
+/* <Button>, <IconButton>
+----------------------------------------------------------------------------- */
+.button,
+.icon-button {
+  @keyframes button-click {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    25% {
+      opacity: 0.3;
+      transform: scale(0.3);
+    }
+
+    75% {
+      opacity: 0.15;
+      transform: scale(1.25);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(2.5);
+    }
+  }
+
+  @keyframes button-focus {
+    from {
+      opacity: 0.5;
+      transform: scale(0);
+    }
+
+    to {
+      opacity: 0.5;
+      transform: scale(0.85);
+    }
+  }
+
+  @keyframes button-focus-alternate {
+    from {
+      opacity: 0.5;
+      transform: scale(0.85);
+    }
+
+    to {
+      opacity: 0.5;
+      transform: scale(0.75);
+    }
+  }
+
+  display: inline-flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0 0.25rem;
+  padding: 0.25rem 1rem 0.25rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 0.25rem;
+  outline: none;
+  overflow: hidden;
+  color: $color-primary;
+  font-size: inherit;
+  line-height: 1.35rem;
+  font-family: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  transition-property: background-color;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0s;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+
+  &:hover {
+    text-decoration: none;
+    background-color: rgba($color: $color-primary, $alpha: 0.05);
+  }
+
+  .ripple {
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+    background-color: transparent;
+    inset: 0;
+
+    span {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: rgba($color: $color-primary, $alpha: 0.4);
+      transform: scale(0);
+
+      &.click {
+        animation-name: button-click;
+        animation-duration: 0.35s;
+        animation-timing-function: linear;
+      }
+
+      &.focus {
+        animation-name: button-focus, button-focus-alternate;
+        animation-duration: 0.15s, 1.5s;
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1), linear;
+        animation-delay: 0s, 0.15s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+    }
+  }
+
+  // disabled styles
+  &.disabled {
+    color: rgba(0, 0, 0, 0.25);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  // outline styles
+  &.outline {
+    border-color: rgba($color: $color-primary, $alpha: 0.5);
+    transition-property: background-color, border-color;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    // disabled outline styles
+    &.disabled {
+      border-color: rgba(0, 0, 0, 0.12);
+      color: rgba(0, 0, 0, 0.26);
+    }
+  }
+
+  // fill styles
+  &.fill {
+    color: rgb(255, 255, 255);
+    background-color: $color-primary;
+    box-shadow:
+      0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    transition-property: background-color, box-shadow;
+
+    &:hover {
+      background-color: $color-primary-dark;
+      box-shadow:
+        0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    .ripple {
+      span {
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    // disabled fill styles
+    &.disabled {
+      color: rgba(0, 0, 0, 0.26);
+      background-color: rgba(0, 0, 0, 0.12);
+      box-shadow: none;
+    }
+  }
+}
+
+/* <IconButton>
+----------------------------------------------------------------------------- */
+.icon-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.75rem;
+  border-width: 0;
+  border-radius: 50%;
+  overflow: visible;
+  vertical-align: middle;
+}
