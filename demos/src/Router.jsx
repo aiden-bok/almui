@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import {
   ButtonIndexPage,
   ContainerIndexPage,
+  FormIndexPage,
   HomeIndexPage,
   LayoutIndexPage,
   TextIndexPage,
@@ -21,6 +22,7 @@ const Router = () => {
       <Routes>
         <Route element={<ButtonIndexPage />} path="/button/*" />
         <Route element={<ContainerIndexPage />} path="/container/*" />
+        <Route element={<FormIndexPage />} path="/form/*" />
         <Route element={<LayoutIndexPage />} path="/layout/*" />
         <Route element={<TextIndexPage />} path="/text/*" />
         <Route element={<HomeIndexPage />} path="/*" />
