@@ -1,7 +1,14 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { HomeIndexPage, LayoutIndexPage } from './pages'
+import {
+  ButtonIndexPage,
+  ContainerIndexPage,
+  FormIndexPage,
+  HomeIndexPage,
+  LayoutIndexPage,
+  TextIndexPage,
+} from './pages'
 
 /**
  * React component that provides `<BrowserRouter>`, a URL-based router.
@@ -13,8 +20,12 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<LayoutIndexPage />} path="/layout/*"></Route>
-        <Route element={<HomeIndexPage />} path="/*"></Route>
+        <Route element={<ButtonIndexPage />} path="/button/*" />
+        <Route element={<ContainerIndexPage />} path="/container/*" />
+        <Route element={<FormIndexPage />} path="/form/*" />
+        <Route element={<LayoutIndexPage />} path="/layout/*" />
+        <Route element={<TextIndexPage />} path="/text/*" />
+        <Route element={<HomeIndexPage />} path="/*" />
       </Routes>
     </BrowserRouter>
   )

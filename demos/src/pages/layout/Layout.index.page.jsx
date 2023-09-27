@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { PageDemoPage } from '.'
+import { ASideDemoPage, FooterDemoPage, HeaderDemoPage, PageDemoPage } from '.'
 
 /**
  * React component that provides an index page for layout related demo pages.
@@ -12,8 +12,11 @@ import { PageDemoPage } from '.'
 const LayoutIndexPage = () => {
   return (
     <Routes>
-      <Route element={<PageDemoPage />} path="page"></Route>
-      <Route element={<h1>Layout Index Page</h1>} path="*"></Route>
+      <Route element={<ASideDemoPage />} path="aside" />
+      <Route element={<FooterDemoPage />} path="footer" />
+      <Route element={<HeaderDemoPage />} path="header" />
+      <Route element={<PageDemoPage />} path="page" />
+      <Route element={<h1>Layout Index Page</h1>} path="*" />
     </Routes>
   )
 }
