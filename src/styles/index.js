@@ -1,2 +1,5 @@
-import './common.scss'
+import './button.scss'
+import './container.scss'
+import './form.scss'
 import './layout.scss'
+import './text.scss'

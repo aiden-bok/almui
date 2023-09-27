@@ -10,7 +10,7 @@ import { createElement } from '../core'
  * @param {React.ReactNode} [props.children] React Node to include in the page element.
  * @param {String} [props.className] Style sheet class name to apply to page elements.
  * @param {String} [props.tag='div'] Tag name to apply to page elements.
- * @returns {React.Component} Page Element React Component.
+ * @returns {React.Component} Page element React Component.
  */
 const Page = React.forwardRef(function Page(
   { children, className, tag },
