@@ -1,0 +1,303 @@
+@use 'common' as *;
+
+/* <TextField>
+----------------------------------------------------------------------------- */
+.text-field {
+  display: flex;
+  padding: 0.1rem;
+  vertical-align: middle;
+
+  .input-label {
+    margin: 1px;
+    padding: 0.25rem 0.5rem;
+    line-height: 1.5rem;
+  }
+
+  .input-base {
+    display: flex;
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0 0.5rem;
+    border-radius: 0.25rem;
+
+    &::before {
+      z-index: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      box-sizing: border-box;
+      border-radius: inherit;
+      pointer-events: none;
+      content: '';
+      background-color: transparent;
+    }
+
+    .input-text {
+      width: 100%;
+      margin: 1px;
+      padding: 0.25rem 0.5rem;
+      border: none;
+      border-radius: 0.25rem;
+      outline: none;
+      color: rgba(0, 0, 0, 0.8);
+      font-size: inherit;
+      line-height: 1.5rem;
+      font-family: inherit;
+      letter-spacing: inherit;
+      word-spacing: inherit;
+      cursor: text;
+      background-color: transparent;
+      transition-property: color;
+      transition-duration: 0.3s;
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      transition-delay: 0s;
+
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.3);
+      }
+
+      &[type='password'] {
+        &:not(:placeholder-shown) {
+          letter-spacing: 0.15rem;
+        }
+      }
+    }
+
+    .input-extra {
+      display: flex;
+      align-items: center;
+      height: 0.1rem;
+      padding-top: 0.25rem;
+      vertical-align: middle;
+    }
+
+    &::after {
+      z-index: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgba(0, 0, 0, 0.25);
+      border-radius: inherit;
+      pointer-events: none;
+      content: '';
+      transition-property: border-color;
+      transition-duration: 0.2s;
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      transition-delay: 0s;
+    }
+
+    &:hover {
+      &::after {
+        border-color: rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    &.input-focus {
+      &::after {
+        border-width: 2px;
+        border-color: $color-primary;
+      }
+    }
+
+    // disabled styles
+    &.disabled {
+      .input-text {
+        color: rgba(0, 0, 0, 0.38);
+        cursor: default;
+      }
+
+      &::after {
+        border-style: dotted;
+      }
+
+      &:hover {
+        &::after {
+          border-color: rgba(0, 0, 0, 0.25);
+        }
+      }
+    }
+
+    // underline styles
+    &.underline {
+      border-radius: 0;
+
+      &::before {
+        border-width: 0 0 1px 0;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.25);
+        background-color: transparent;
+        transition-property: border-color;
+        transition-duration: 0.2s;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      &::after {
+        border-width: 0 0 2px 0;
+        border-style: solid;
+        border-color: $color-primary;
+        transition-property: transform;
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+
+      &:hover {
+        &::before {
+          border-color: rgba(0, 0, 0, 0.8);
+        }
+      }
+
+      &.input-focus {
+        &::after {
+          transform: scaleX(1) translateX(0);
+        }
+      }
+
+      // disabled underline styles
+      &.disabled {
+        &::before {
+          border-style: dotted;
+        }
+
+        &:hover {
+          &::before {
+            border-color: rgba(0, 0, 0, 0.25);
+          }
+        }
+      }
+    }
+
+    // fill styles
+    &.fill {
+      border-radius: 0;
+
+      &::before {
+        border-width: 0 0 1px 0;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.25);
+        border-radius: 0.25rem 0.25rem 0 0;
+        background-color: rgba(0, 0, 0, 0.06);
+        transition-duration: 0.2s;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      &::after {
+        border-width: 0 0 2px 0;
+        border-style: solid;
+        border-color: $color-primary;
+        transition-property: transform;
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+
+      &:hover {
+        &::before {
+          border-color: rgba(0, 0, 0, 0.8);
+          background-color: rgba(0, 0, 0, 0.09);
+        }
+      }
+
+      &.input-focus {
+        &::before {
+          background-color: rgba(0, 0, 0, 0.06);
+        }
+
+        &::after {
+          transform: scaleX(1) translateX(0);
+        }
+      }
+
+      // disabled fill styles
+      &.disabled {
+        &::before {
+          border-style: dotted;
+          background-color: rgba(0, 0, 0, 0.12);
+        }
+
+        &:hover {
+          &::before {
+            border-color: rgba(0, 0, 0, 0.25);
+          }
+        }
+      }
+    }
+
+    // full-width styles
+    &.full-width {
+      width: 100%;
+
+      .input-text {
+        width: 100%;
+      }
+    }
+  }
+
+  .input-error {
+    color: $color-error;
+    font-size: 0.75rem;
+  }
+
+  &.field-error {
+    .input-label {
+      color: $color-error;
+    }
+
+    .input-base {
+      &::after {
+        border-color: rgba($color: $color-error, $alpha: 0.5);
+      }
+
+      &:hover {
+        &::after {
+          border-color: rgba($color: $color-error, $alpha: 0.8);
+        }
+      }
+
+      &.input-focus {
+        &::after {
+          border-color: $color-error;
+        }
+      }
+
+      // errored underline styles
+      &.underline {
+        &::before {
+          border-color: rgba($color: $color-error, $alpha: 0.35);
+        }
+
+        &::after {
+          border-color: $color-error;
+        }
+
+        &:hover {
+          &::before {
+            border-color: rgba($color: $color-error, $alpha: 0.8);
+          }
+        }
+      }
+
+      // errored fill styles
+      &.fill {
+        &::before {
+          border-color: rgba($color: $color-error, $alpha: 0.35);
+        }
+
+        &::after {
+          border-color: $color-error;
+        }
+
+        &:hover {
+          &::before {
+            border-color: rgba($color: $color-error, $alpha: 0.8);
+          }
+        }
+      }
+    }
+  }
+}
