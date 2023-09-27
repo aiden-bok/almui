@@ -1,11 +1,11 @@
-import React from 'react'
 import { Page } from 'almui'
+import React from 'react'
 
 /**
  * React component that provides a `<Page>` demo page.
  *
  * @component
- * @returns {React.Component} `<Page />` demo page.
+ * @returns {React.Component} `<Page>` demo page.
  */
 const PageDemoPage = () => {
   return (
