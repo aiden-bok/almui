@@ -1,6 +1,55 @@
-import React, { useRef } from 'react'
+import React from 'react'
 
 import { createElement } from '../core'
+
+/**
+ * Create and returns container element for ripple effects.
+ *
+ * @method createRipple
+ * @returns {React.Component} Ripple effect element React Component.
+ */
+const createRipple = () => {
+  return createElement({
+    props: { className: 'ripple', key: 'ripple' },
+    tag: 'span',
+  })
+}
+
+/**
+ * Ripple effect of button element.
+ *
+ * @method rippleEffect
+ * @param {SyntheticEvent} eve React event object.
+ */
+const effectRipple = (eve) => {
+  if (!eve?.target?.querySelector) return
+  const eleRipple = eve.target.querySelector('.ripple')
+  const eleFocus = eleRipple.querySelector('.focus')
+  const size = Math.max(eleRipple.clientWidth, eleRipple.clientHeight)
+
+  // Remove elements for focus ripple effect if it is not a focus event
+  eleFocus && eve.type !== 'focus' && eleRipple.removeChild(eleFocus)
+
+  if (eve.type === 'click') {
+    const rectButton = eleRipple.parentNode.getBoundingClientRect()
+    // Create elements for click ripple effects
+    const eleEffect = document.createElement('span')
+    eleEffect.className = eve.type
+    eleEffect.style.left = eve.pageX - rectButton.x - size / 2 + 'px'
+    eleEffect.style.top = eve.pageY - rectButton.y - size / 2 + 'px'
+    eleEffect.style.width = eleEffect.style.height = size + 'px'
+    eleRipple.appendChild(eleEffect)
+    setTimeout(() => eleRipple.removeChild(eleEffect), 500)
+  } else if (eve.type === 'focus' && !eleFocus) {
+    // Create elements for focus ripple effect
+    const eleEffect = document.createElement('span')
+    eleEffect.className = eve.type
+    eleEffect.style.left = 0 + 'px'
+    eleEffect.style.top = (eleRipple.clientHeight - size) / 2 + 'px'
+    eleEffect.style.width = eleEffect.style.height = size + 'px'
+    eleRipple.appendChild(eleEffect)
+  }
+}
 
 /**
  * A React Component that provides button elements.
@@ -20,49 +69,8 @@ const Button = React.forwardRef(function Button(
   { children, className, disabled, onClick, styled, tag },
   forwardedRef
 ) {
-  const refRipple = useRef(null)
-
   // Container element for ripple effects
-  const eleRipple = createElement({
-    props: { className: 'ripple', key: 'ripple', ref: refRipple },
-    tag: 'span',
-  })
-
-  /**
-   * Ripple effect of button element.
-   *
-   * @private
-   * @method rippleEffect
-   * @param {SyntheticEvent} eve React event object.
-   */
-  const effectRipple = (eve) => {
-    const eleRipple = refRipple.current
-    const eleFocus = eleRipple.querySelector('.focus')
-    const size = Math.max(eleRipple.clientWidth, eleRipple.clientHeight)
-
-    // Remove elements for focus ripple effect if it is not a focus event
-    eleFocus && eve.type !== 'focus' && eleRipple.removeChild(eleFocus)
-
-    if (eve.type === 'click') {
-      const rectButton = eleRipple.parentNode.getBoundingClientRect()
-      // Create elements for click ripple effects
-      const eleEffect = document.createElement('span')
-      eleEffect.className = eve.type
-      eleEffect.style.left = eve.pageX - rectButton.x - size / 2 + 'px'
-      eleEffect.style.top = eve.pageY - rectButton.y - size / 2 + 'px'
-      eleEffect.style.width = eleEffect.style.height = size + 'px'
-      eleRipple.appendChild(eleEffect)
-      setTimeout(() => eleRipple.removeChild(eleEffect), 500)
-    } else if (eve.type === 'focus' && !eleFocus) {
-      // Create elements for focus ripple effect
-      const eleEffect = document.createElement('span')
-      eleEffect.className = eve.type
-      eleEffect.style.left = 0 + 'px'
-      eleEffect.style.top = (eleRipple.clientHeight - size) / 2 + 'px'
-      eleEffect.style.width = eleEffect.style.height = size + 'px'
-      eleRipple.appendChild(eleEffect)
-    }
-  }
+  const eleRipple = createRipple()
 
   // Stylesheet class for button elements
   let classButton = styled ? `button ${styled}` : 'button fill'
@@ -89,4 +97,4 @@ const Button = React.forwardRef(function Button(
   return eleButton
 })
 
-export { Button }
+export { Button, createRipple, effectRipple }

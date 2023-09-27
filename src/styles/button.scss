@@ -89,6 +89,10 @@
     background-color: rgba($color: $color-primary, $alpha: 0.05);
   }
 
+  * {
+    pointer-events: none;
+  }
+
   .ripple {
     z-index: 0;
     position: absolute;
