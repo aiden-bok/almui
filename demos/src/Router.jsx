@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import {
+  ButtonIndexPage,
   ContainerIndexPage,
   HomeIndexPage,
   LayoutIndexPage,
@@ -18,6 +19,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route element={<ButtonIndexPage />} path="/button/*" />
         <Route element={<ContainerIndexPage />} path="/container/*" />
         <Route element={<LayoutIndexPage />} path="/layout/*" />
         <Route element={<TextIndexPage />} path="/text/*" />
