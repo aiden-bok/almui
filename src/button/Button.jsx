@@ -63,10 +63,11 @@ const effectRipple = (eve) => {
  * @param {Function} props.styled Button styled type.
  * "fill"(default) | "outline" | "underline" | "text"
  * @param {String} [props.tag='button'] Tag name to apply to button elements.
+ * @param {String} [props.type='button'] Button type.
  * @returns {React.Component} Button element React Component.
  */
 const Button = React.forwardRef(function Button(
-  { children, className, disabled, onClick, styled, tag },
+  { children, className, disabled, onClick, styled, tag, type },
   forwardedRef
 ) {
   // Container element for ripple effects
@@ -89,7 +90,7 @@ const Button = React.forwardRef(function Button(
       onFocus: (eve) => effectRipple(eve),
       onMouseOut: (eve) => effectRipple(eve),
       ref: forwardedRef,
-      type: 'button',
+      type: type ? type : 'button',
     },
     tag: tag ? tag : 'button',
   })

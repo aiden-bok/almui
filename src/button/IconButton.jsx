@@ -13,10 +13,11 @@ import { createRipple, effectRipple } from './'
  * @param {Boolean} props.disabled Whether the icon button element is disabled.
  * @param {Function} props.onClick Function to execute when the icon button element is clicked.
  * @param {String} [props.tag='button'] Tag name to apply to icon button elements.
+ * @param {String} [props.type='button'] Button type.
  * @returns {React.Component} Icon button element React Component.
  */
 const IconButton = React.forwardRef(function IconButton(
-  { children, className, disabled, onClick, tag },
+  { children, className, disabled, onClick, tag, type },
   forwardedRef
 ) {
   // Container element for ripple effects
@@ -39,7 +40,7 @@ const IconButton = React.forwardRef(function IconButton(
       onFocus: (eve) => effectRipple(eve),
       onMouseOut: (eve) => effectRipple(eve),
       ref: forwardedRef,
-      type: 'button',
+      type: type ? type : 'button',
     },
     tag: tag ? tag : 'button',
   })
